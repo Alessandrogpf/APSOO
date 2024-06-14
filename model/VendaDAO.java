@@ -1,7 +1,6 @@
 package model;
 
 import model.entidades.Venda;
-import model.entidades.ItemDeVenda;
 
 public class VendaDAO {
 

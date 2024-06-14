@@ -26,7 +26,7 @@ public class Venda {
 
 	}
 
-	public void autenticaCartao(char "Autorizado") {
+	public void autenticaCartao() {
 
 	}
 
