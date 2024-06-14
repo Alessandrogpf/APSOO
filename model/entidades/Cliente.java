@@ -7,7 +7,7 @@ public class Cliente extends Usuario {
 	private Entrega[] entrega;
 
 	public String getCPF() {
-		return null;
+		return cpf;
 	}
 
 }

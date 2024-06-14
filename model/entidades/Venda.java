@@ -31,7 +31,7 @@ public class Venda {
 	}
 
 	public double getTotal() {
-		return 0;
+		return valor_total;
 	}
 
 	public void Venda(Cliente cli, Date agora) {

@@ -4,25 +4,25 @@ import java.util.Date;
 
 public class Usuario {
 
-	private String nome;
+	protected String nome;
 
-	private Date data_nascimento;
+	protected Date data_nascimento;
 
-	private String email;
+	protected String email;
 
-	private String telefone;
+	protected String telefone;
 
-	private String estado;
+	protected String estado;
 
-	private String cidade;
+	protected String cidade;
 
-	private String bairro;
+	protected String bairro;
 
-	private String rua;
+	protected String rua;
 
-	private String numero;
+	protected String numero;
 
-	private String cep;
+	protected String cep;
 
 	private Login login;
 
