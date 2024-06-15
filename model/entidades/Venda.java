@@ -14,15 +14,15 @@ public class Venda {
 
 	private Pagamento[] pagamento;
 
+	/***********
+	 * MÉTODOS *
+	 ***********/
+
 	public void adicionarItem(Produto prod, int quant) {
 
 	}
 
 	public void debitarPreco(double valorPago) {
-
-	}
-
-	public void addValorTotal(Produto prod) {
 
 	}
 

@@ -26,4 +26,8 @@ public class Usuario {
 
 	private Login login;
 
+	/***********
+	 * MÉTODOS *
+	 ***********/
+
 }

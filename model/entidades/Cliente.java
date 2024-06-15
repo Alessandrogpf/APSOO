@@ -6,6 +6,10 @@ public class Cliente extends Usuario {
 
 	private Entrega[] entrega;
 
+	/***********
+	 * MÉTODOS *
+	 ***********/
+
 	public String getCPF() {
 		return cpf;
 	}

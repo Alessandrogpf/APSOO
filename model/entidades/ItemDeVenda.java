@@ -8,6 +8,10 @@ public class ItemDeVenda {
 
 	private Produto produto;
 
+	/***********
+	 * MÉTODOS *
+	 ***********/
+
 	public void ItemDeVenda(Produto prod, int quant) {
 
 	}

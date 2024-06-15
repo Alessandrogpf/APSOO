@@ -14,20 +14,35 @@ public class Produto {
 
 	private Categoria categoria;
 
-	public double getPreco() {
-		return 0;
+	/***********
+	 * MÉTODOS *
+	 ***********/
+
+	public int getCod(){
+		return this.codProduto;
 	}
 
-	public void getCategoria() {
+	public double getPreco() {
+		return this.preco;
+	}
 
+	public Categoria getCategoria() {
+		return this.categoria;
 	}
 
 	public String getNome() {
-		return null;
+		return this.nome;
+	}
+
+	public String getDesc(){
+		return this.descricao;
 	}
 
 	public void decrementaEstoque(int quant) {
-
+		if (quant > this.estoque){
+			// Possível exceção aqui
+		}
+		this.estoque = this.estoque - quant;
 	}
 
 }

@@ -12,6 +12,10 @@ public class Funcionario extends Usuario {
 
 	private Venda venda;
 
+	/***********
+	 * MÉTODOS *
+	 ***********/
+
 	private void setSalario(double salarioNovo) {
 		if (this.admin == true){
 			this.salario = salarioNovo; //REVISAR LÓGICA
