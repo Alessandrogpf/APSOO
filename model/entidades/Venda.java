@@ -18,6 +18,24 @@ public class Venda {
 	 * MÉTODOS *
 	 ***********/
 
+	/** GETTERS e SETTERS **/ 
+	public int getVendaID(){
+		return this.vendaID;
+	}
+
+	public Date getData(){
+		return this.data_hora;
+	}
+
+	public double getTotal() {
+		return this.valor_total;
+	}
+
+	public Cliente getCliente(){
+		return this.cliente;
+	}
+
+	/** FUNÇÕES **/
 	public void adicionarItem(Produto prod, int quant) {
 
 	}
@@ -27,18 +45,15 @@ public class Venda {
 	}
 
 	public void autenticaCartao() {
-
+		// Revisar...
 	}
 
-	public double getTotal() {
-		return valor_total;
-	}
-
+	/** CREATE **/
 	public void Venda(Cliente cli, Date agora) {
 
 	}
 
-	public void Venda(Date agora) {
+	public void Venda(Date agora) { // Sem CPF
 
 	}
 
