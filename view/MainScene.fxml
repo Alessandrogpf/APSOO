@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="422.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainScene">
+   <children>
+      <Button layoutX="168.0" layoutY="299.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="38.0" text="Login" />
+      <Label layoutX="108.0" layoutY="96.0" prefHeight="18.0" prefWidth="159.0" text="Usuário">
+         <padding>
+            <Insets top="-2.0" />
+         </padding>
+      </Label>
+      <TextArea prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
