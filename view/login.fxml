@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="422.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainScene">
+   <children>
+      <Button layoutX="122.0" layoutY="317.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" text="Login" textAlignment="CENTER" textFill="#0d0d0d">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="34.0" layoutY="165.0" prefHeight="18.0" prefWidth="56.0" text="Usuário" textAlignment="CENTER">
+         <padding>
+            <Insets top="-2.0" />
+         </padding>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="225.0" text="Senha">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField layoutX="102.0" layoutY="166.0" prefHeight="23.0" prefWidth="203.0" />
+      <TextField layoutX="102.0" layoutY="225.0" prefHeight="25.0" prefWidth="203.0" />
+      <Label layoutX="135.0" layoutY="76.0" text="Katchau" textFill="#8a0a0a">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="99.0" fitWidth="65.0" layoutX="70.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Documents/raio-.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
