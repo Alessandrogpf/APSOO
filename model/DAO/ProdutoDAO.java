@@ -18,7 +18,7 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
                 + "nome TEXT NOT NULL, "
                 + "preco DECIMAL(10, 2) NOT NULL, "
                 + "descricao TEXT NOT NULL, "
-                + "estoque TEXT NOT NULL, "
+                + "estoque INTEGER NOT NULL, "
                 + "categoria INTEGER NOT NULL"
                 + ");";
 
