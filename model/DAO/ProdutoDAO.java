@@ -52,7 +52,7 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
 
     @Override
     public Produto get(long id) {
-        String sql = "SELECT id, nome, preco FROM produtos WHERE id = ?";
+        String sql = "SELECT id, nome, preco, descricao FROM produtos WHERE id = ?";
         Produto produto = new Produto();
 
         try (Connection conn = this.connect();
@@ -64,6 +64,7 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
                 produto.setId(rs.getLong("id"));
                 produto.setNome(rs.getString("nome"));
                 produto.setPreco(rs.getBigDecimal("preco"));
+                produto.setDescricao(rs.getString("descricao"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -93,14 +94,16 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
 
     @Override
     public void update(Produto produto) {
-        String sql = "UPDATE produtos SET nome = ?, preco = ? WHERE id = ?";
+        String sql = "UPDATE produtos SET nome = ?, preco = ?, descricao = ? WHERE id = ?";
 
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, produto.getNome());
             pstmt.setBigDecimal(2, produto.getPreco());
-            pstmt.setLong(3, produto.getCod());
+            pstmt.setString(3, produto.getDesc());
+            pstmt.setLong(4, produto.getCod());
             pstmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

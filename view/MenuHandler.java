@@ -30,10 +30,9 @@ public class MenuHandler {
             // Essas funcionalidades não serão implementadas na modal, estão aqui apenas para fins de teste
             case "5":
                 controller.obterPorId();
-                System.out.println("Buscar produto por id");
                 break;
             case "6":
-                System.out.println("Buscar todos os produtos");
+                controller.atualizar();
                 break;
             case "7":
                 System.out.println("Deletar um produto");

@@ -126,6 +126,115 @@ public class ProdutoService {
         dialog.showAndWait();
     }
 
+    public void atualizar() {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Atualização de Produto");
+        dialog.setHeaderText("Informe o ID do produto que deseja atualizar:");
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        TextField idField = new TextField();
+        idField.setPromptText("ID");
+
+        grid.add(new Label("ID do Produto:"), 0, 0);
+        grid.add(idField, 1, 0);
+
+        dialog.getDialogPane().setContent(grid);
+
+        ButtonType btnConfirmar = new ButtonType("Confirmar", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(btnConfirmar, ButtonType.CANCEL);
+
+        Button okButton = (Button) dialog.getDialogPane().lookupButton(btnConfirmar);
+        okButton.setDisable(true);
+
+        idField.textProperty().addListener((observable, oldValue, newValue) -> {
+            okButton.setDisable(newValue.trim().isEmpty() || !newValue.matches("\\d+"));
+        });
+
+        dialog.setResultConverter(button -> {
+            if (button == btnConfirmar) {
+                long id = Long.parseLong(idField.getText());
+                Produto produto = produtoDAO.get(id);
+
+                if (produto == null) {
+                    System.out.println("Produto não encontrado na base de dados");
+                } else {
+                    abrirFormularioEdicaoProduto(produto);
+                }
+            }
+            return null;
+        });
+
+        dialog.showAndWait();
+    }
+
+    private void abrirFormularioEdicaoProduto(Produto produto) {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Edição de Produto");
+        dialog.setHeaderText("Atualize as informações do produto:");
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        TextField nomeField = new TextField(produto.getNome());
+        nomeField.setPromptText("Nome");
+
+        TextField precoField = new TextField(produto.getPreco().toString());
+        precoField.setPromptText("Preço");
+
+        TextField descricaoField = new TextField(produto.getDesc());
+        descricaoField.setPromptText("Descrição");
+
+        grid.add(new Label("Nome:"), 0, 0);
+        grid.add(nomeField, 1, 0);
+        grid.add(new Label("Preço:"), 0, 1);
+        grid.add(precoField, 1, 1);
+        grid.add(new Label("Descrição:"), 0, 2);
+        grid.add(descricaoField, 1, 2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        ButtonType btnConfirmar = new ButtonType("Confirmar", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(btnConfirmar, ButtonType.CANCEL);
+
+        Button okButton = (Button) dialog.getDialogPane().lookupButton(btnConfirmar);
+        okButton.setDisable(true);
+
+        nomeField.textProperty().addListener((observable, oldValue, newValue) -> {
+            okButton.setDisable(newValue.trim().isEmpty() || precoField.getText().isEmpty() || descricaoField.getText().isEmpty());
+        });
+
+        precoField.textProperty().addListener((observable, oldValue, newValue) -> {
+            okButton.setDisable(newValue.trim().isEmpty() || nomeField.getText().isEmpty() || descricaoField.getText().isEmpty());
+        });
+
+        descricaoField.textProperty().addListener((observable, oldValue, newValue) -> {
+            okButton.setDisable(newValue.trim().isEmpty() || nomeField.getText().isEmpty() || precoField.getText().isEmpty());
+        });
+
+        dialog.setResultConverter(button -> {
+            if (button == btnConfirmar) {
+                produto.setNome(nomeField.getText());
+                produto.setPreco(new BigDecimal(precoField.getText()));
+                produto.setDescricao(descricaoField.getText());
+
+                produtoDAO.update(produto);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Atualização Concluída");
+                alert.setHeaderText(null);
+                alert.setContentText("Produto atualizado com sucesso!");
+                alert.showAndWait();
+            }
+            return null;
+        });
+
+        dialog.showAndWait();
+    }
+
     private void exibirModalProdutoEncontrado(Produto produto) {
         Dialog<Void> dialog = new Dialog<>();
         dialog.setTitle("Detalhes do Produto");

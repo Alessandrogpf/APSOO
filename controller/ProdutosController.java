@@ -13,4 +13,8 @@ public class ProdutosController {
     public void obterPorId() {
         service.obterPorId();
     }
+
+    public void atualizar() {
+        service.atualizar();
+    }
 }
