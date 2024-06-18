@@ -37,6 +37,9 @@ public class MenuHandler {
             case "7":
                 controller.deletar();
                 break;
+            case "8":
+                controller.obterTodos();
+                break;
 
             default:
                 System.out.println("Opção inválida");

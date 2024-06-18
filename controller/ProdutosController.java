@@ -10,6 +10,10 @@ public class ProdutosController {
         service.inserir();
     }
 
+    public void obterTodos() {
+        service.obterTodos();
+    }
+
     public void obterPorId() {
         service.obterPorId();
     }

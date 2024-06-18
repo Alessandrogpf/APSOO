@@ -1,6 +1,9 @@
 package model.business;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import model.DAO.ProdutoDAO;
 import model.entidades.Produto;
@@ -80,6 +83,41 @@ public class ProdutoService {
         });
 
         dialog.showAndWait();
+    }
+
+    public void obterTodos() {
+        ObservableList<Produto> produtos = FXCollections.observableArrayList(produtoDAO.getAll());
+
+        if (produtos.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Lista de Produtos");
+            alert.setHeaderText(null);
+            alert.setContentText("Não há produtos cadastrados na base de dados.");
+            alert.showAndWait();
+        } else {
+            Dialog<Void> dialog = new Dialog<>();
+            dialog.setTitle("Lista de Produtos");
+            dialog.setHeaderText("Lista de todos os produtos cadastrados:");
+
+            TableView<Produto> table = new TableView<>();
+            table.setEditable(false);
+
+            TableColumn<Produto, String> nomeColumn = new TableColumn<>("Nome");
+            nomeColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+
+            TableColumn<Produto, Integer> estoqueColumn = new TableColumn<>("Estoque");
+            estoqueColumn.setCellValueFactory(new PropertyValueFactory<>("estoque"));
+
+            TableColumn<Produto, Double> precoColumn = new TableColumn<>("Preço");
+            precoColumn.setCellValueFactory(new PropertyValueFactory<>("preco"));
+
+            table.getColumns().addAll(nomeColumn, estoqueColumn, precoColumn);
+            table.setItems(produtos);
+
+            dialog.getDialogPane().setContent(table);
+
+            dialog.showAndWait();
+        }
     }
 
     public void obterPorId() {

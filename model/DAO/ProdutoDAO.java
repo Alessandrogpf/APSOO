@@ -74,7 +74,7 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
 
     @Override
     public List<Produto> getAll() {
-        String sql = "SELECT nome FROM produtos";
+        String sql = "SELECT nome, descricao, estoque, preco FROM produtos";
         List<Produto> produtos = new ArrayList<>();
 
         try (Connection conn = this.connect();
@@ -84,6 +84,9 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
             while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setNome(rs.getString("nome"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setEstoque(rs.getInt("estoque"));
+                produto.setPreco(rs.getBigDecimal("preco"));
                 produtos.add(produto);
             }
         } catch (SQLException e) {
