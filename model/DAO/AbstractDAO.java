@@ -36,5 +36,5 @@ abstract class AbstractDAO<T> {
 
     public abstract void update(T item);
 
-    public abstract void delete(int id);
+    public abstract void delete(long id);
 }

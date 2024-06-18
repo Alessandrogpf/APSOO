@@ -7,7 +7,7 @@ public class ProdutosController {
     ProdutoService service = new ProdutoService();
 
     public void inserir() {
-        service.abrirFormularioCadastroProduto();
+        service.inserir();
     }
 
     public void obterPorId() {
@@ -16,5 +16,9 @@ public class ProdutosController {
 
     public void atualizar() {
         service.atualizar();
+    }
+
+    public void deletar() {
+        service.deletar();
     }
 }

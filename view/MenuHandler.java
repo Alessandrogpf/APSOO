@@ -35,7 +35,7 @@ public class MenuHandler {
                 controller.atualizar();
                 break;
             case "7":
-                System.out.println("Deletar um produto");
+                controller.deletar();
                 break;
 
             default:

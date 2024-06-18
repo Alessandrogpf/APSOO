@@ -11,7 +11,7 @@ public class ProdutoService {
 
     ProdutoDAO produtoDAO = new ProdutoDAO();
 
-    public void abrirFormularioCadastroProduto() {
+    public void inserir() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Cadastro de Produto");
         dialog.setHeaderText("Preencha as informações do novo produto");
@@ -162,6 +162,66 @@ public class ProdutoService {
                     System.out.println("Produto não encontrado na base de dados");
                 } else {
                     abrirFormularioEdicaoProduto(produto);
+                }
+            }
+            return null;
+        });
+
+        dialog.showAndWait();
+    }
+
+    public void deletar() {
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("Deletar Produto");
+        dialog.setHeaderText("Digite o ID do produto que deseja deletar:");
+
+        ButtonType btnConfirmar = new ButtonType("Confirmar", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(btnConfirmar, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        TextField idField = new TextField();
+        idField.setPromptText("ID");
+
+        grid.add(new Label("ID:"), 0, 0);
+        grid.add(idField, 1, 0);
+
+        dialog.getDialogPane().setContent(grid);
+
+        Button okButton = (Button) dialog.getDialogPane().lookupButton(btnConfirmar);
+        okButton.setDisable(true);
+
+        idField.textProperty().addListener((observable, oldValue, newValue) -> {
+            okButton.setDisable(newValue.trim().isEmpty() || !newValue.matches("\\d+"));
+        });
+
+        dialog.setResultConverter(button -> {
+            if (button == btnConfirmar) {
+                long id = Long.parseLong(idField.getText());
+                Produto produto = produtoDAO.get(id);
+
+                if (produto == null) {
+                    System.out.println("Produto não encontrado na base de dados");
+                } else {
+                    Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+                    confirmDialog.setTitle("Confirmar Exclusão");
+                    confirmDialog.setHeaderText(null);
+                    confirmDialog.setContentText("Tem certeza que deseja excluir o produto '" + produto.getNome() + "'?");
+
+                    ButtonType btnExcluir = new ButtonType("Excluir", ButtonBar.ButtonData.OK_DONE);
+                    confirmDialog.getButtonTypes().setAll(btnExcluir, ButtonType.CANCEL);
+
+                    confirmDialog.setResultConverter(confirmButton -> {
+                        if (confirmButton == btnExcluir) {
+                            produtoDAO.delete(id);
+                            System.out.println("Produto excluído com sucesso!");
+                        }
+                        return null;
+                    });
+
+                    confirmDialog.showAndWait();
                 }
             }
             return null;
