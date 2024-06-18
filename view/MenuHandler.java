@@ -1,5 +1,6 @@
 package view;
 
+import controller.ProdutosController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -16,7 +17,8 @@ public class MenuHandler {
                 System.out.println("Iniciar Venda");
                 break;
             case "2":
-                System.out.println("Cadastrar Produto");
+                ProdutosController controller = new ProdutosController();
+                controller.inserir();
                 break;
             case "3":
                 System.out.println("Verificar estoque");

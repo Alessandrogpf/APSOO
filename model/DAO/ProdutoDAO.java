@@ -1,4 +1,4 @@
-package DAO;
+package model.DAO;
 
 import model.entidades.Produto;
 
@@ -44,6 +44,7 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
             pstmt.setInt(5, produto.getCategoria());
             pstmt.executeUpdate();
             conn.commit();
+            System.out.println("Produto inserido com sucesso!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

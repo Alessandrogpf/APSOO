@@ -1,6 +1,6 @@
 package controller;
 
-import DAO.ProdutoDAO;
+import model.DAO.ProdutoDAO;
 import model.entidades.Produto;
 
 import java.math.BigDecimal;
