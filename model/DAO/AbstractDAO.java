@@ -30,7 +30,7 @@ abstract class AbstractDAO<T> {
 
     public abstract void insert(T item);
 
-    public abstract T get(int id);
+    public abstract T get(long id);
 
     public abstract List<T> getAll();
 

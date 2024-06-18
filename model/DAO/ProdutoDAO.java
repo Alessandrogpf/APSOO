@@ -51,13 +51,13 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
     }
 
     @Override
-    public Produto get(int id) {
+    public Produto get(long id) {
         String sql = "SELECT id, nome, preco FROM produtos WHERE id = ?";
         Produto produto = new Produto();
 
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
+            pstmt.setLong(1, id);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -73,7 +73,7 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
 
     @Override
     public List<Produto> getAll() {
-        String sql = "SELECT id, nome, preco FROM produtos";
+        String sql = "SELECT nome FROM produtos";
         List<Produto> produtos = new ArrayList<>();
 
         try (Connection conn = this.connect();
@@ -82,9 +82,7 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
 
             while (rs.next()) {
                 Produto produto = new Produto();
-                produto.setId(rs.getLong("id"));
                 produto.setNome(rs.getString("nome"));
-                produto.setPreco(rs.getBigDecimal("preco"));
                 produtos.add(produto);
             }
         } catch (SQLException e) {

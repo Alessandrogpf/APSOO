@@ -12,12 +12,12 @@ public class MenuHandler {
     @FXML
     private void handleOptionSelection() {
         String option = optionTextField.getText();
+        ProdutosController controller = new ProdutosController();
         switch (option) {
             case "1":
                 System.out.println("Iniciar Venda");
                 break;
             case "2":
-                ProdutosController controller = new ProdutosController();
                 controller.inserir();
                 break;
             case "3":
@@ -26,6 +26,19 @@ public class MenuHandler {
             case "4":
                 System.out.println("Cadastrar Cliente");
                 break;
+
+            // Essas funcionalidades não serão implementadas na modal, estão aqui apenas para fins de teste
+            case "5":
+                controller.obterPorId();
+                System.out.println("Buscar produto por id");
+                break;
+            case "6":
+                System.out.println("Buscar todos os produtos");
+                break;
+            case "7":
+                System.out.println("Deletar um produto");
+                break;
+
             default:
                 System.out.println("Opção inválida");
         }

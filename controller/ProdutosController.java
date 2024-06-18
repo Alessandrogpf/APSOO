@@ -9,4 +9,8 @@ public class ProdutosController {
     public void inserir() {
         service.abrirFormularioCadastroProduto();
     }
+
+    public void obterPorId() {
+        service.obterPorId();
+    }
 }
